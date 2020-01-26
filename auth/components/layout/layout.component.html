@@ -1,0 +1,12 @@
+<div appFusePerfectScrollbar fxLayout="column" id="layout">
+  <div class="alerts">
+    <nac-alert-center [animation]="'fancy'" [htmlTextEnabled]="false"></nac-alert-center>
+  </div>
+  <div *ngIf="!(isHttpActive | async)" fxLayout="column" fxLayoutAlign="center center" id="layout-form-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div *ngIf="(isHttpActive | async)" class="auth" fxFlex="1 1 auto" fxLayout="column" fxLayoutAlign="center center">
+    <mat-progress-spinner class='spinner' color="warn" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</div>

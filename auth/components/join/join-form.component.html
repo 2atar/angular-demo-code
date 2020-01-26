@@ -1,0 +1,58 @@
+<div *appFuseIfOnDom class="logo">
+  <b>Know</b>Gas Portal
+</div>
+
+<div *ngIf="!addUserToDistributor" id="change-password-form">
+
+  <div class="title">ENTER YOUR PASSWORD</div>
+
+  <form [formGroup]="joinForm" name="joinForm" novalidate>
+    <mat-form-field>
+      <input formControlName="email" matInput placeholder="Email" type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="password" matInput placeholder="Password" type="password">
+      <mat-error *ngIf="joinFormErrors.password.required">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="confirm_password" matInput placeholder="Confirm password" type="password">
+      <mat-error *ngIf="joinFormErrors.confirm_password.required">
+        Confirmation of password is required
+      </mat-error>
+      <mat-error *ngIf="!joinFormErrors.confirm_password.required">
+        Confirmation of password does not match password
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="name" matInput placeholder="Name">
+      <mat-error *ngIf="!joinFormErrors.name.required">
+        Please enter your name
+      </mat-error>
+    </mat-form-field>
+    <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+      <mat-checkbox [formControlName]="'terms'" aria-label="I read and accept" name="terms" required>
+        <span>I accept user <a href="assets/docs/RMI_EULA.pdf">agreement</a>*</span>
+      </mat-checkbox>
+    </div>
+    <button (click)="signUp()"
+            [disabled]="joinForm.invalid"
+            aria-label="SEND RESET LINK"
+            class="submit-button"
+            color="primary"
+            mat-raised-button>
+      SIGN UP
+    </button>
+  </form>
+
+  <div class="login" fxLayout="row" fxLayoutAlign="center center">
+    <a [routerLink]="'/auth/login'" class="link">Go back to login</a>
+  </div>
+
+</div>
+
+<div *ngIf="addUserToDistributor" fxLayout="row" fxLayoutAlign="center">
+  <mat-progress-spinner class='spinner' color="warn" mode="indeterminate"></mat-progress-spinner>
+</div>
+

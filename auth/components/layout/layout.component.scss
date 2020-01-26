@@ -1,0 +1,44 @@
+@import "../../../fuse/scss/fuse";
+@import '../../../fuse/scss/variables/knowgas-variables';
+
+:host {
+
+  #layout {
+    width: 100%;
+    overflow: auto;
+    background: #e9e9e9;
+    background-size: cover;
+    height: 100vh;
+
+    .logo {
+      margin: 16px 0 32px 0;
+      color: #3498db;
+      font-size: 40px;
+      filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2));
+      text-align: center;
+    }
+
+    #layout-form-wrapper {
+      flex: 1 0 auto;
+      padding: 32px;
+
+      @include media-breakpoint('xs') {
+        padding: 16px;
+      }
+    }
+  }
+
+  .alerts {
+    position: fixed;
+    left: 80%;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    margin: 20px 20px 20px 20px;
+  }
+}
+
+.spinner::ng-deep circle {
+  stroke: mat-color($custom-primary, 700);
+}
+

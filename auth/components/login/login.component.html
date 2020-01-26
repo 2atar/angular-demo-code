@@ -1,0 +1,40 @@
+<div *appFuseIfOnDom class="logo">
+  <b>Know</b>Gas Portal
+</div>
+
+<div *appFuseIfOnDom id="login-form">
+
+  <div class="title">LOGIN TO YOUR ACCOUNT</div>
+
+  <form (submit)="loginUser()" [formGroup]="loginForm" name="loginForm" novalidate>
+
+    <mat-form-field>
+      <input formControlName="email" matInput placeholder="Email">
+      <mat-error *ngIf="loginFormErrors.email.required">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="!loginFormErrors.email.required && loginFormErrors.email.email">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input formControlName="password" matInput placeholder="Password" type="password">
+      <mat-error *ngIf="loginFormErrors.password.required">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+         fxLayoutAlign="space-between center">
+      <a [routerLink]="'/auth/forgot-password'" class="forgot-password">
+        Forgot Password?
+      </a>
+    </div>
+
+    <button [disabled]="loginForm.invalid" aria-label="LOG IN" class="submit-button" color="primary"
+            mat-raised-button>
+      LOGIN
+    </button>
+  </form>
+</div>
